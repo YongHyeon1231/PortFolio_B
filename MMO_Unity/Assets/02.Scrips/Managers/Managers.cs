@@ -10,7 +10,10 @@ namespace RPG.Managers
         private static Managers Instance { get { Init(); return s_instnace; } } // 유일한 매니저를 갖고있다.
 
         private InputManager _input = new InputManager();
+        private ResourceManager _resource = new ResourceManager();
         public static InputManager Input { get { return Instance._input; } }
+        public static ResourceManager Resource { get {  return Instance._resource; } }
+
 
         void Start()
         {
