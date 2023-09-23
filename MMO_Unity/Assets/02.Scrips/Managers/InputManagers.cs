@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPG.Managers
 {
@@ -15,6 +16,10 @@ namespace RPG.Managers
 
         public void OnUpdate()
         {
+            //UI가 클릭된 상황이면 바로 return;
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             if (Input.anyKey && KeyAction != null)
             {
                 KeyAction.Invoke();

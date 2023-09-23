@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Managers;
 using RPG.Utils;
+using RPG.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,13 +15,15 @@ public class PlayerController : MonoBehaviour
     {
         Managers.Input.MouseAction -= OnMouseClicked;
         Managers.Input.MouseAction += OnMouseClicked;
+
+        Managers.Resource.Instantiate("UI/UI_Button");
     }
 
     // GameObject (Player)
     // Transfrom
     // PlayerController (*)
 
-    
+
     public enum PlayerState
     {
         Die,
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             _state = PlayerState.Idle;
         }
-        else 
+        else
         {
             float moveDist = Mathf.Clamp(_speed * Time.deltaTime, 0.0f, dir.magnitude);
 
