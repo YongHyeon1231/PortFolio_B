@@ -10,9 +10,11 @@ using UnityEngine.UI;
 // UI_Base에는 UI 게임오브젝트를 찾고 받아오고 AddUIEvent를 하는 기능을 가지고 있습니다.
 namespace RPG.UI
 {
-    public class UI_Base : MonoBehaviour
+    public abstract class UI_Base : MonoBehaviour
     {
         Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
+
+        public abstract void Init();
 
         protected void Bind<T>(Type type) where T : UnityEngine.Object
         {

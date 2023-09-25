@@ -6,7 +6,7 @@ namespace RPG.UI.PopUp
 {
     public class UI_PopUp : UI_Base
     {
-        public virtual void Init()
+        public override void Init()
         {
             Managers.Managers.UI.SetCanvas(gameObject, true);
         }
