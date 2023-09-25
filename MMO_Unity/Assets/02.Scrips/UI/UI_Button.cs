@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using RPG.Utils;
+using UnityEngine.EventSystems;
+using RPG.UI.PopUp;
 
 namespace RPG.UI
 {
-    public class UI_Button :  UI_Base
+    public class UI_Button :  UI_PopUp
     {
         enum Buttons
         {
@@ -26,23 +28,40 @@ namespace RPG.UI
             TestObject,
         }
 
+        enum Images
+        {
+            ItemIcon,
+        }
+
         private void Start()
         {
+            Init();
+        }
+
+        public override void Init()
+        {
+            base.Init();
+
             Bind<Button>(typeof(Buttons));
             Bind<TMP_Text>(typeof(Texts));
             Bind<GameObject>(typeof(GameObjects));
+            Bind<Image>(typeof(Images));
 
-            GetText((int)Texts.ScoreText).text = "Bind Test";
             //Get<TMP_Text>((int)Texts.ScoreText).text = "Bind Test";
-        }
 
-        
+            GetButton((int)Buttons.PointButton).gameObject.AddUIEvent(OnButtonClikced);
+
+            GameObject go = GetImage((int)Images.ItemIcon).gameObject;
+            AddUIEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);
+        }
 
         private int _score = 0;
 
-        public void OnButtonClikced()
+        public void OnButtonClikced(PointerEventData data)
         {
             _score++;
+
+            GetText((int)Texts.ScoreText).text = $"Á¡¼ö : {_score}";
         }
     }
 }

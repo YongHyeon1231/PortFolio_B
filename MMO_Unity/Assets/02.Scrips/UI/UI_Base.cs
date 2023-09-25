@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// UI_Base에는 UI 게임오브젝트를 찾고 받아오고 AddUIEvent를 하는 기능을 가지고 있습니다.
 namespace RPG.UI
 {
     public class UI_Base : MonoBehaviour
@@ -50,9 +52,34 @@ namespace RPG.UI
         }
 
         protected TMP_Text GetText(int idx) { return Get<TMP_Text>(idx); }
-
         protected Button GetButton(int idx) { return Get<Button>(idx); }
-
         protected Image GetImage(int idx) { return Get<Image>(idx); }
+
+        public static void AddUIEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
+        {
+            UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);
+
+            switch (type)
+            {
+                case Define.UIEvent.Click:
+                    {
+                        evt.OnClickHandler -= action;
+                        evt.OnClickHandler += action;
+                    }
+                    break;
+                case Define.UIEvent.Drag:
+                    {
+                        evt.OnDragHandler -= action;
+                        evt.OnDragHandler += action;
+                    }
+                    break;
+                case Define.UIEvent.DragBegin:
+                    break;
+                case Define.UIEvent.DragEnd:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

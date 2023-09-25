@@ -11,8 +11,11 @@ namespace RPG.Managers
 
         private InputManager _input = new InputManager();
         private ResourceManager _resource = new ResourceManager();
+        private UIManagers _ui = new UIManagers();
+
         public static InputManager Input { get { return Instance._input; } }
         public static ResourceManager Resource { get {  return Instance._resource; } }
+        public static UIManagers UI { get { return Instance._ui; } }
 
 
         void Start()

@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Managers;
 using RPG.Utils;
 using RPG.UI;
+using RPG.UI.PopUp;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class PlayerController : MonoBehaviour
         Managers.Input.MouseAction -= OnMouseClicked;
         Managers.Input.MouseAction += OnMouseClicked;
 
-        Managers.Resource.Instantiate("UI/UI_Button");
+        //Managers.Resource.Instantiate("UI/UI_Button");
+
+        //TEMP
+        UI_Button ui = Managers.UI.ShowPopUpUI<UI_Button>();
     }
 
     // GameObject (Player)

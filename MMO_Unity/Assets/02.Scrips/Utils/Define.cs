@@ -6,6 +6,14 @@ namespace RPG.Utils
 {
     public class Define
     {
+        public enum UIEvent
+        {
+            Click,
+            Drag,
+            DragBegin,
+            DragEnd,
+        }
+
         public enum MouseEvent
         {
             Press,
