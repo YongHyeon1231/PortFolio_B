@@ -28,7 +28,7 @@ namespace RPG.UI
             Bind<GameObject>(typeof(GameObjects));
             Get<GameObject>((int)GameObjects.ItemNameText_TMP).GetComponent<TMP_Text>().text = _name;
 
-            Get<GameObject>((int)GameObjects.ItemIcon).AddUIEvent((PointerEventData) => { Debug.Log($"아이템 클릭! {_name}"); });
+            Get<GameObject>((int)GameObjects.ItemIcon).BindEvent((PointerEventData) => { Debug.Log($"아이템 클릭! {_name}"); });
         }
 
         public void SetInfo(string name)

@@ -49,10 +49,10 @@ namespace RPG.UI
 
             //Get<TMP_Text>((int)Texts.ScoreText).text = "Bind Test";
 
-            GetButton((int)Buttons.PointButton).gameObject.AddUIEvent(OnButtonClikced);
+            GetButton((int)Buttons.PointButton).gameObject.BindEvent(OnButtonClikced);
 
             GameObject go = GetImage((int)Images.ItemIcon).gameObject;
-            AddUIEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);
+            BindEvent(go, (PointerEventData data) => { go.transform.position = data.position; }, Define.UIEvent.Drag);
         }
 
         private int _score = 0;

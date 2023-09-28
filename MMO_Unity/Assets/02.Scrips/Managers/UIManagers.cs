@@ -1,3 +1,4 @@
+using RPG.UI;
 using RPG.UI.PopUp;
 using RPG.UI.Scene;
 using RPG.Utils;
@@ -42,6 +43,19 @@ namespace RPG.Managers
             {
                 canvas.sortingOrder = 0;
             }
+        }
+
+        public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UI_Base
+        {
+            if (string.IsNullOrEmpty(name))
+                name = typeof(T).Name;
+
+            GameObject go = Managers.Resource.Instantiate($"UI/SubItem/{name}");
+            //위에서 생성한 다음에 부모 밑에다가 생성하는 란
+            if (parent != null)
+                go.transform.SetParent(parent);
+
+            return Util.GetOrAddComponent<T>(go);
         }
 
         public T ShowSceneUI<T>(string name = null) where T : UI_Scene
