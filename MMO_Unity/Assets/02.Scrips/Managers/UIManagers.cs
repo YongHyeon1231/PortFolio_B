@@ -121,5 +121,11 @@ namespace RPG.Managers
             while (_popUpStack.Count > 0)
                 ClosePopUpUI();
         }
+
+        public void Clear()
+        {
+            CloseAllPopUpUI();
+            _sceneUI = null;
+        }
     }
 }

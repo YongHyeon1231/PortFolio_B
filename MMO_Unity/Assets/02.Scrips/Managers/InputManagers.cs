@@ -42,5 +42,11 @@ namespace RPG.Managers
                 }
             }
         }
+
+        public void Clear()
+        {
+            KeyAction = null;
+            MouseAction = null;
+        }
     }
 }
