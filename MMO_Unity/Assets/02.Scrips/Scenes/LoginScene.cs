@@ -13,6 +13,17 @@ namespace RPG.Scenes
             base.Init();
 
             SceneType = Define.Scene.Login;
+
+            List<GameObject> list = new List<GameObject>();
+            for (int i = 0; i < 2; i++)
+            {
+                list.Add(Managers.Managers.Resource.Instantiate("UnityChan"));
+            }
+
+            foreach (GameObject obj in list)
+            {
+                Managers.Managers.Resource.Destroy(obj);
+            }
         }
 
         private void Update()

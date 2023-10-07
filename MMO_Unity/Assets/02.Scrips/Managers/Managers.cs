@@ -10,12 +10,14 @@ namespace RPG.Managers
         private static Managers Instance { get { Init(); return s_instnace; } } // 유일한 매니저를 갖고있다.
 
         private InputManager _input = new InputManager();
+        private PoolManager _pool = new PoolManager();
         private ResourceManager _resource = new ResourceManager();
         private SceneManagerEx _scene = new SceneManagerEx();
         private SoundManager _sound = new SoundManager();
         private UIManagers _ui = new UIManagers();
 
         public static InputManager Input { get { return Instance._input; } }
+        public static PoolManager Pool { get { return Instance._pool; } }
         public static ResourceManager Resource { get {  return Instance._resource; } }
         public static SceneManagerEx Scene { get { return Instance._scene; } }
         public static SoundManager Sound { get { return Instance._sound; } }
@@ -46,6 +48,7 @@ namespace RPG.Managers
                 DontDestroyOnLoad(go);
                 s_instnace = go.GetComponent<Managers>();
 
+                s_instnace._pool.Init();
                 s_instnace._sound.Init();
             }
         }
@@ -56,6 +59,8 @@ namespace RPG.Managers
             Sound.Clear();
             Scene.Clear();
             UI.Clear();
+
+            Pool.Clear();
         }
     }
 }

@@ -14,6 +14,11 @@ namespace RPG.Scenes
 
             SceneType = Define.Scene.Game;
             Managers.Managers.UI.ShowSceneUI<UI_Inven>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Managers.Managers.Resource.Instantiate("UnityChan");
+            }
         }
 
         public override void Clear()
