@@ -1,0 +1,31 @@
+using RPG.Data;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace RPG.Managers
+{
+    public interface ILoader<Key, Value>
+    {
+        Dictionary<Key, Value> MakeDict();
+    }
+
+    public class DataManager
+    {
+        public Dictionary<int, Stat> StatDict { get; private set; } = new Dictionary<int, Stat>();
+
+        public void Init()
+        {
+            StatDict = LoadJson<StatData, int, Stat>("StatData").MakeDict();
+
+        }
+
+        private Loader LoadJson<Loader, key, Value>(string path) where Loader : ILoader<key, Value>
+        {
+            TextAsset textAsset = Managers.Resource.Load<TextAsset>($"Data/{path}");
+            return JsonUtility.FromJson<Loader>(textAsset.text);
+        }
+    }
+}

@@ -17,7 +17,7 @@ namespace RPG.Managers
         public void OnUpdate()
         {
             //UI가 클릭된 상황이면 바로 return;
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (EventSystem.current == null || EventSystem.current.IsPointerOverGameObject())
                 return;
 
             if (Input.anyKey && KeyAction != null)
