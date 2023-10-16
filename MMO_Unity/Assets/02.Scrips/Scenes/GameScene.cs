@@ -16,7 +16,7 @@ namespace RPG.Scenes
             SceneType = Define.Scene.Game;
             Managers.Managers.UI.ShowSceneUI<UI_Inven>();
 
-            Dictionary<int, Stat> dict = Managers.Managers.Data.StatDict;
+            Dictionary<int, Data.Stat> dict = Managers.Managers.Data.StatDict;
         }
 
 
