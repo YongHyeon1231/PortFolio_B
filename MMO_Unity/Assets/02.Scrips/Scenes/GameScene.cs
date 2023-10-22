@@ -17,6 +17,8 @@ namespace RPG.Scenes
             Managers.Managers.UI.ShowSceneUI<UI_Inven>();
 
             Dictionary<int, Data.Stat> dict = Managers.Managers.Data.StatDict;
+
+            gameObject.GetOrAddComponent<CursorController>();
         }
 
 

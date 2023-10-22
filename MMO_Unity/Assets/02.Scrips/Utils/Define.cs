@@ -39,6 +39,8 @@ namespace RPG.Utils
         public enum MouseEvent
         {
             Press,
+            PointerDown,
+            PointerUp,
             Click,
         }
 
