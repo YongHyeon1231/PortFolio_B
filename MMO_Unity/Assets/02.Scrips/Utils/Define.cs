@@ -6,6 +6,17 @@ namespace RPG.Utils
 {
     public class Define
     {
+        public enum State
+        {
+        Die,
+        Moving,
+        Idle,
+        Skill,
+        Channelling,
+        Jumping,
+        Falling,
+        }
+
         public enum Layer
         {
             Monster = 8,

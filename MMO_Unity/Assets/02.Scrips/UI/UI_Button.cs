@@ -33,11 +33,6 @@ namespace RPG.UI
             ItemIcon,
         }
 
-        private void Start()
-        {
-            Init();
-        }
-
         public override void Init()
         {
             base.Init();

@@ -13,11 +13,6 @@ namespace RPG.UI
             GridPanel,
         }
 
-        private void Start()
-        {
-            Init();
-        }
-
         public override void Init()
         {
             base.Init();
