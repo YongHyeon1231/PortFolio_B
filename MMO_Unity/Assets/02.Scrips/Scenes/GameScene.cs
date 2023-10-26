@@ -1,4 +1,5 @@
 using RPG.Data;
+using RPG.Managers;
 using RPG.UI;
 using RPG.Utils;
 using System.Collections;
@@ -15,10 +16,13 @@ namespace RPG.Scenes
 
             SceneType = Define.Scene.Game;
             Managers.Managers.UI.ShowSceneUI<UI_Inven>();
-
             Dictionary<int, Data.Stat> dict = Managers.Managers.Data.StatDict;
-
             gameObject.GetOrAddComponent<CursorController>();
+
+            GameObject player = Managers.Managers.Game.Spawn(Define.WorldObject.Player, "UnityChan");
+            Camera.main.gameObject.GetOrAddComponent<CameraController>().SetPlayer(player);
+
+            Managers.Managers.Game.Spawn(Define.WorldObject.Monster, "Enemy/SkeletonWarriorUnity");
         }
 
 

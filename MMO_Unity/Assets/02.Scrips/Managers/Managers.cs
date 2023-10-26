@@ -9,6 +9,13 @@ namespace RPG.Managers
         private static Managers s_instnace; // 유일성이 보장된다.
         private static Managers Instance { get { Init(); return s_instnace; } } // 유일한 매니저를 갖고있다.
 
+        #region Contents
+        private GameManagerEx _game = new GameManagerEx();
+
+        public static GameManagerEx Game { get { return Instance._game; } }
+        #endregion
+
+        #region Core
         private DataManager _data = new DataManager();
         private InputManager _input = new InputManager();
         private PoolManager _pool = new PoolManager();
@@ -24,7 +31,7 @@ namespace RPG.Managers
         public static SceneManagerEx Scene { get { return Instance._scene; } }
         public static SoundManager Sound { get { return Instance._sound; } }
         public static UIManagers UI { get { return Instance._ui; } }
-
+        #endregion
 
         void Start()
         {

@@ -11,6 +11,8 @@ namespace RPG.Managers
         [SerializeField] private Vector3 _delta = new Vector3(0.0f, 6.0f, -5.0f);
         [SerializeField] private GameObject _player = null;
 
+        public void SetPlayer(GameObject player) { _player = player; }
+
         void Start()
         {
 
@@ -20,6 +22,11 @@ namespace RPG.Managers
         {
             if (_mode == Define.CameraMode.QuarterView)
             {
+                if (_player.IsValid() == false)
+                {
+                    return;
+                }
+
                 RaycastHit hit;
                 if (Physics.Raycast(_player.transform.position, _delta, out hit, _delta.magnitude, LayerMask.GetMask("Wall")))
                 {
