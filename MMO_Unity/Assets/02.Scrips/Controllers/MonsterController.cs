@@ -27,10 +27,7 @@ public class MonsterController : BaseController
 
     protected override void UpdateIdle()
     {
-        Debug.Log("Monster UpdateIdle");
-
-        // TODO : 매니저가 생기면 옮기자
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = Managers.Game.GetPlayer();
         if (player == null) //없다면 그냥 대기
             return;
 
@@ -100,8 +97,7 @@ public class MonsterController : BaseController
         {
             // 체력
             Stat targetStat = _lockTarget.GetComponent<Stat>();
-            int damage = Mathf.Max(0, _stat.Attack - targetStat.Defentse);
-            targetStat.HP -= damage;
+            targetStat.OnAttacked(_stat);
 
             if (targetStat.HP <= 0)
             {

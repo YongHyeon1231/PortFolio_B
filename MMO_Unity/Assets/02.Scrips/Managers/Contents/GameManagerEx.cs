@@ -13,7 +13,9 @@ namespace RPG.Managers
         // int <-> GameObject
         //private Dictionary<int, GameObject> _players = new Dictionary<int, GameObject>();
         //private Dictionary<int, GameObject> _monsters = new Dictionary<int, GameObject>();
-        
+
+        public GameObject GetPlayer() { return _player; }
+
         public GameObject Spawn(Define.WorldObject type, string path, Transform parent = null)
         {
             GameObject go = Managers.Resource.Instantiate(path, parent);

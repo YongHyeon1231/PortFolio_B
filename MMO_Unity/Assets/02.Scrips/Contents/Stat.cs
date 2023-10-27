@@ -1,3 +1,4 @@
+using RPG.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,29 @@ namespace RPG.Contents
             _attack = 10;
             _defense = 5;
             _moveSpeed = 5.0f;
+        }
+
+        public virtual void OnAttacked(Stat attacker)
+        {
+            int damage = Mathf.Max(0, attacker.Attack - Defentse);
+            HP -= damage;
+            if (HP <= 0)
+            {
+                HP = 0;
+                OnDead(attacker);
+            }
+        }
+
+        protected virtual void OnDead(Stat attacker)
+        {
+            PlayerStat playerStat = attacker as PlayerStat;
+            if (playerStat != null)
+            {
+                // 몬스터 경험치로 바꿔주기
+                playerStat.Exp += 15;
+            }
+
+            Managers.Managers.Game.Despawn(gameObject);
         }
     }
 }

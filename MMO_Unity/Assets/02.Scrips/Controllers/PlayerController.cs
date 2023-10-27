@@ -85,9 +85,7 @@ public class PlayerController : BaseController
         if (_lockTarget != null)
         {
             Stat targetStat = _lockTarget.GetComponent<Stat>();
-            PlayerStat myStat = gameObject.GetComponent<PlayerStat>();
-            int damage = Mathf.Max(0, myStat.Attack - targetStat.Defentse);
-            targetStat.HP -= damage;
+            targetStat.OnAttacked(_stat);
         }
 
         if (_stopSkill)
