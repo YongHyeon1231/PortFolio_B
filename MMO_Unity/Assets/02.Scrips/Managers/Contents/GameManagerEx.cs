@@ -1,4 +1,5 @@
 using RPG.Utils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace RPG.Managers
         // int <-> GameObject
         //private Dictionary<int, GameObject> _players = new Dictionary<int, GameObject>();
         //private Dictionary<int, GameObject> _monsters = new Dictionary<int, GameObject>();
+
+        public Action<int> OnSpawnEvent;
 
         public GameObject GetPlayer() { return _player; }
 
@@ -30,6 +33,8 @@ namespace RPG.Managers
                 case Define.WorldObject.Monster:
                     {
                         _monster.Add(go);
+                        if (OnSpawnEvent != null)
+                            OnSpawnEvent.Invoke(1);
                     }
                     break;
                 default:
@@ -70,6 +75,8 @@ namespace RPG.Managers
                         if (_monster.Contains(go))
                         {
                             _monster.Remove(go);
+                            if (OnSpawnEvent != null)
+                                OnSpawnEvent.Invoke(-1);
                         }
                     }
                     break;

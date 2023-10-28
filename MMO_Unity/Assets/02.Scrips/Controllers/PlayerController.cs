@@ -48,6 +48,8 @@ public class PlayerController : BaseController
 
         // 이동
         Vector3 dir = _destPos - transform.position;
+        // 위로 올라가는 게 있다면 Raycast를 해서 ground를 찾은 다음 바닥을 찍게 합니다.
+        dir.y = 0.0f;
         if (dir.magnitude < 0.1f)
         {
             State = Define.State.Idle;
